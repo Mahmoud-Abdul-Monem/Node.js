@@ -110,12 +110,16 @@ app.delete("/users/:user_id", async (req, res) => {
 
 
 app.get("/authors", async (req, res) => {
-    const authors = await db.getAll("authors")
-    res.json({
-        data: authors
-    })
-})
+    const searchParam = req.query.search;
 
+    if (searchParam) {
+        const filteredAuthors = await db.searchByName("authors", searchParam);
+        return res.json({ data: filteredAuthors });
+    }
+
+    const authors = await db.getAll("authors");
+    return res.json({ data: authors });
+});
 
 app.get("/authors/:author_id", async (req, res) => {
     const authorId = req.params.author_id;
@@ -170,16 +174,7 @@ app.delete("/authors/:author_id", async (req, res) => {
     }
 });
 
-app.get("/authors", async (req, res) => {
-    const searchParam = req.query.search
-    if (searchParam) {
-        const filteredAuthors = await db.searchByName("authors", searchParam)
-        return res.json({
-            data: filteredAuthors
-        })
-    }
 
-})
 
 
 app.listen(3000, () => {
