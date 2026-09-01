@@ -1,0 +1,45 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "eyad"
+        },
+        {
+            "id": 2,
+            "name": "marawan mousa"
+        },
+        {
+            "name": "MARAWAN PABLO",
+            "id": "6063724"
+        },
+        {
+            "name": "habiba",
+            "id": "8629054"
+        },
+        {
+            "name": "mahmoud",
+            "id": "867063"
+        }
+    ],
+    "authors": [
+        {
+            "id": "1",
+            "name": "ali"
+        },
+        {
+            "id": "2",
+            "name": "eyad"
+        },
+        {
+            "id": "3",
+            "name": "abdo"
+        },
+        {
+            "name": "mohand",
+            "age": "15",
+            "id": "1594219"
+        }
+    ],
+    "books": [],
+    "orders": []
+}
