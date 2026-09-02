@@ -31,8 +31,10 @@ app.get("/users/:name", (req, res) => {
 })
 
 app.patch("/users/:name", (req, res) => {
+    // همسك ال id
     const userName = req.params.name
     const { name, age } = req.body || {}
+    // ه check انه موجود كنوع من ال validation 
     const userIndex = users.findIndex(el => el.name === userName)
 
     if (userIndex === -1) {
