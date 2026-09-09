@@ -1,0 +1,27 @@
+{
+    "auth_users": [
+        {
+            "email": "eyad@test.com",
+            "username": "eyad alsherif",
+            "passwordHash": "$2b$10$YbGXXnWRopAoyCTLskC9/elWTx80n0DyoGdEuJTxO2qLFMpYykWwG",
+            "is_verified": false,
+            "id": "6045921"
+        },
+        {
+            "email": "linuxuser908@gmail.com",
+            "username": "ali",
+            "password": "$2b$10$ZFBg.UTlPKRh.PipN0rRfeNrQVLiebe4tNl0ePv7VnzO.sobOvduC",
+            "id": "3679665"
+        }
+    ],
+    "users": [
+        {
+            "name": "eyad"
+        },
+        {
+            "name": "ahmed"
+        }
+    ],
+    "books": [],
+    "orders": []
+}
