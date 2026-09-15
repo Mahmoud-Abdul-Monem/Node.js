@@ -1,0 +1,14 @@
+{
+    "auth_users": [
+        {
+            "username": "ali",
+            "email": "linuxuser908@gmail.com",
+            "password": "$2b$10$6cbEf7ZzTgl6Vvnd9u8e/OsbgPPb7jLqqG89UBEM/uOxI7rU6IjXi",
+            "role": "merchant",
+            "id": "1352527"
+        }
+    ],
+    "products": [],
+    "carts": [],
+    "orders": []
+}

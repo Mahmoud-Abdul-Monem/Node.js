@@ -1,1 +1,47 @@
-{"users":[],"authors":[{"id":"1","name":"ali","age":"30","email":"ali@gmail.com"},{"id":"2","name":"eyad","age":"26","email":"eyad@gmail.com"},{"id":"3","name":"abdo","age":"26","email":"abdo@gmail.com"},{"id":"1594219","name":"mohand","age":"26","email":"mohand@gmail.com"},{"name":"fahd","age":20,"email":"2445455@gmail.com","id":"5247114"}],"errors":[{"message":"اختبار الـ Global Error Handler في Express 5","stack":"Error: اختبار الـ Global Error Handler في Express 5\n    at file:///C:/Users/Mahmoud%20Abdul-Monem/Desktop/nodeJS/Task-10/index.js:112:11\n    at Layer.handleRequest (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\lib\\layer.js:152:17)\n    at next (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\lib\\route.js:157:13)\n    at Route.dispatch (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\lib\\route.js:117:3)\n    at handle (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\index.js:435:11)\n    at Layer.handleRequest (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\lib\\layer.js:152:17)\n    at C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\index.js:295:15\n    at processParams (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\index.js:582:12)\n    at next (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\index.js:291:5)\n    at file:///C:/Users/Mahmoud%20Abdul-Monem/Desktop/nodeJS/Task-10/index.js:11:5","method":"GET","url":"/test-error","timestamp":"2026-09-05T23:23:02.842Z","id":"3538532"}],"books":[],"orders":[]}
+{
+    "users": [],
+    "authors": [
+        {
+            "id": "1",
+            "name": "ali",
+            "age": "30",
+            "email": "ali@gmail.com"
+        },
+        {
+            "id": "2",
+            "name": "eyad",
+            "age": "26",
+            "email": "eyad@gmail.com"
+        },
+        {
+            "id": "3",
+            "name": "abdo",
+            "age": "26",
+            "email": "abdo@gmail.com"
+        },
+        {
+            "id": "1594219",
+            "name": "mohand",
+            "age": "26",
+            "email": "mohand@gmail.com"
+        },
+        {
+            "name": "fahd",
+            "age": 20,
+            "email": "2445455@gmail.com",
+            "id": "5247114"
+        }
+    ],
+    "errors": [
+        {
+            "message": "اختبار الـ Global Error Handler في Express ",
+            "stack": "Error: اختبار الـ Global Error Handler في Express 5\n    at file:///C:/Users/Mahmoud%20Abdul-Monem/Desktop/nodeJS/Task-10/index.js:112:11\n    at Layer.handleRequest (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\lib\\layer.js:152:17)\n    at next (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\lib\\route.js:157:13)\n    at Route.dispatch (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\lib\\route.js:117:3)\n    at handle (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\index.js:435:11)\n    at Layer.handleRequest (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\lib\\layer.js:152:17)\n    at C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\index.js:295:15\n    at processParams (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\index.js:582:12)\n    at next (C:\\Users\\Mahmoud Abdul-Monem\\Desktop\\nodeJS\\Task-10\\node_modules\\router\\index.js:291:5)\n    at file:///C:/Users/Mahmoud%20Abdul-Monem/Desktop/nodeJS/Task-10/index.js:11:5",
+            "method": "GET",
+            "url": "/test-error",
+            "timestamp": "2026-09-05T23:23:02.842Z",
+            "id": "3538532"
+        }
+    ],
+    "books": [],
+    "orders": []
+}
