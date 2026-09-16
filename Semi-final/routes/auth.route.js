@@ -58,7 +58,7 @@ authRouter.post("/login", validateBody(loginSchema), async (req, res, next) => {
     });
 });
 authRouter.post("/logout", (req, res, next) => {
-    res.clearCookie("node_token_api")
+    res.clearCookie("node_api_token")
 
     res.json({ message: "logout successful" });
 

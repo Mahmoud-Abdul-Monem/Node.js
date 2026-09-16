@@ -8,14 +8,16 @@ import z from "zod"
 export const productsRouter = Router();
 const db = createDB();
 
+
 productsRouter.get("/", async (req, res) => {
     const products = await db.getAll("products");
     const search = req.query.search;
 
     if (search) {
-        const filtered = products.filter(el =>
-            el.name.toLowerCase().includes(search.toLowerCase()) ||
-            el.description?.toLowerCase().includes(search.toLowerCase())
+        const searchLc = search.toLowerCase();
+        const filtered = products.filter(p =>
+            (p.name && p.name.toLowerCase().includes(searchLc)) ||
+            (p.description && p.description.toLowerCase().includes(searchLc))
         );
         return res.status(200).json({ data: filtered });
     }
@@ -32,13 +34,15 @@ productsRouter.get("/:pro_id", async (req, res) => {
 
     res.status(200).json({ data: product });
 });
+
+
 productsRouter.post("/", checkAuth, checkRole("merchant"), validateBody(productSchema), async (req, res, next) => {
     const newProduct = await db.create("products", {
         name: req.body.name,
-        desc: req.body.desc,
+        description: req.body.description,
         price: req.body.price,
-        img: req.body.img,
-        merchant_id: req.user.id 
+        image: req.body.image,
+        merchant_id: req.user.id
     });
 
     res.status(201).json({
@@ -51,9 +55,9 @@ productsRouter.patch("/:product_id", checkAuth, checkRole("merchant"), validateB
 
     await db.update("products", proId, {
         name: req.body.name,
-        desc: req.body.desc,
+        description: req.body.description,
         price: req.body.price,
-        img: req.body.img,
+        image: req.body.image,
     });
 
     const updatedProduct = await db.getById("products", proId);

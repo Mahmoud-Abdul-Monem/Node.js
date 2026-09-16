@@ -2,69 +2,97 @@ import { Router } from "express";
 import { validateBody } from "../middleware/validate.body.js";
 import { cartSchema, updateCartSchema } from "../schema/cart.schema.js";
 import { createDB } from "../db.js";
-
+import { checkAuth } from "../middleware/check.auth.js"
+import { checkRole } from "../middleware/check.role.js"
 export const cartRouter = Router();
 const db = createDB();
 
-cartRouter.get("/", async (req, res) => {
+cartRouter.get("/", checkAuth, checkRole("customer"), async (req, res) => {
     const carts = await db.getAll("carts");
-    const userCart = carts.filter((item) => item.userId === req.user.id);
-    res.status(200).json({ cart: userCart });
+    const userCart = carts.find((item) => item.userId === req.user.id);
+    if (!userCart) {
+        return res.status(200).json({
+            data: { id: null, userId: req.user.id, products: [] }
+        })
+    }
+    res.status(200).json({ data: userCart });
 });
 
+cartRouter.post("/", checkAuth, checkRole("customer"), validateBody(cartSchema), async (req, res) => {
+    const productData = req.body;
+    const qtyToAdd = productData.quantity || 1;
 
-cartRouter.post("/", validateBody(cartSchema), async (req, res) => {
-    const { productId, quantity } = req.body;
     const carts = await db.getAll("carts");
+    let userCart = carts.find((c) => c.userId === req.user.id);
 
-    const existingItem = carts.find(
-        (el) => el.userId === req.user.id && el.productId === productId
-    );
+    if (!userCart) {
+        userCart = await db.create("carts", {
+            userId: req.user.id,
+            products: [{
+                id: productData.id,
+                name: productData.name,
+                description: productData.description,
+                price: productData.price,
+                image: productData.image,
+                quantity: qtyToAdd
+            }]
+        });
+    } else {
+        const prodIndex = userCart.products.findIndex((p) => p.id === productData.id);
 
-    if (existingItem) {
-        const updatedQty = existingItem.quantity + 1;
-        await db.update("carts", existingItem.id, { quantity: updatedQty });
-        const updatedItem = await db.getById("carts", existingItem.id);
-        return res.status(200).json({ message: "item updated in cart", data: updatedItem });
+        if (prodIndex > -1) {
+            userCart.products[prodIndex].quantity += qtyToAdd;
+        } else {
+            userCart.products.push({
+                id: productData.id,
+                name: productData.name,
+                description: productData.description,
+                price: productData.price,
+                image: productData.image,
+                quantity: qtyToAdd
+            });
+        }
+
+        await db.update("carts", userCart.id, { products: userCart.products });
+        userCart = await db.getById("carts", userCart.id);
     }
 
-    const newItem = await db.create("carts", {
-        userId: req.user.id,
-        productId,
-        quantity: quantity || 1,
+    res.status(201).json({
+        message: "product added to cart",
+        data: userCart
     });
+});
+cartRouter.patch("/:productId", checkAuth, checkRole("customer"), validateBody(updateCartSchema), async (req, res) => {
+    const { productId } = req.params;
+    const { quantity } = req.body;
+    const carts = await db.getAll("carts");
+    const userCart = carts.find((el) => el.userId === req.user.id);
 
-    res.status(201).json({ message: "item was added to cart", data: newItem });
+    if (!userCart) {
+        return res.status(404).json({ error: "cart not found" });
+    }
+
+    const prodIndex = userCart.products.findIndex((p) => p.id === productId);
+    if (prodIndex === -1) {
+        return res.status(404).json({ error: "product not found in cart" });
+    }
+
+    userCart.products[prodIndex].quantity = quantity;
+    await db.update("carts", userCart.id, { products: userCart.products });
+
+    const updatedCart = await db.getById("carts", userCart.id);
+    res.status(200).json({ message: "cart updated", data: updatedCart });
 });
 
+cartRouter.delete("/:productId", checkAuth, checkRole("customer"), async (req, res) => {
+    const { productId } = req.params;
+    const carts = await db.getAll("carts");
+    const userCart = carts.find((c) => c.userId === req.user.id);
 
-
-
-cartRouter.patch("/:cart_id", validateBody(updateCartSchema), async (req, res) => {
-    const cartId = req.params.cart_id;
-    const existingItem = await db.getById("carts", cartId);
-
-    if (!existingItem || existingItem.userId !== req.user.id) {
-        return res.status(404).json({ error: "item not found in cart" });
+    if (userCart) {
+        const updatedProducts = userCart.products.filter((p) => p.id !== productId);
+        await db.update("carts", userCart.id, { products: updatedProducts });
     }
 
-    await db.update("carts", cartId, {
-        quantity: req.body.quantity,
-    });
-
-    const updatedItem = await db.getById("carts", cartId);
-    res.status(200).json({ message: "cart updated", data: updatedItem });
-});
-
-
-
-cartRouter.delete("/:cart_id", async (req, res) => {
-    const cartId = req.params.cart_id;
-    const existingItem = await db.getById("carts", cartId);
-
-    if (existingItem && existingItem.userId === req.user.id) {
-        await db.delete("carts", cartId);
-    }
-
-    res.status(204).send();
+    res.status(200).json({ message: "product removed from cart" });
 });
