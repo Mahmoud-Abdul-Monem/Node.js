@@ -30,6 +30,7 @@ authRouter.post("/register", validateBody(registerSchema), async (req, res, next
     res.status(201).json({ message: "register successful" });
 });
 
+
 authRouter.post("/login", validateBody(loginSchema), async (req, res, next) => {
     const users = await db.getAll("auth_users");
     const existingUser = users.find((el) => el.email === req.body.email);
@@ -56,7 +57,10 @@ authRouter.post("/login", validateBody(loginSchema), async (req, res, next) => {
         message: "login successful",
         data: { user: payload }
     });
-});
+})
+
+
+
 authRouter.post("/logout", (req, res, next) => {
     res.clearCookie("node_api_token")
 

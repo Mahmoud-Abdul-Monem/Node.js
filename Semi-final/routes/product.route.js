@@ -21,9 +21,9 @@ productsRouter.get("/", async (req, res) => {
         );
         return res.status(200).json({ data: filtered });
     }
-
     res.status(200).json({ data: products });
-});
+})
+
 
 productsRouter.get("/:pro_id", async (req, res) => {
     const product = await db.getById("products", req.params.pro_id);
@@ -34,6 +34,7 @@ productsRouter.get("/:pro_id", async (req, res) => {
 
     res.status(200).json({ data: product });
 });
+
 
 
 productsRouter.post("/", checkAuth, checkRole("merchant"), validateBody(productSchema), async (req, res, next) => {
@@ -49,7 +50,10 @@ productsRouter.post("/", checkAuth, checkRole("merchant"), validateBody(productS
         message: "Product created successfully",
         data: newProduct
     });
-});
+})
+
+
+
 productsRouter.patch("/:product_id", checkAuth, checkRole("merchant"), validateBody(productSchema), async (req, res) => {
     const proId = req.params.product_id;
 
@@ -66,7 +70,9 @@ productsRouter.patch("/:product_id", checkAuth, checkRole("merchant"), validateB
         message: "product updated successfully",
         data: updatedProduct
     });
-});
+})
+
+
 
 productsRouter.delete("/:product_id", checkAuth, checkRole("merchant"), async (req, res) => {
     await db.delete("products", req.params.product_id);

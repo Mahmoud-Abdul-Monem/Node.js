@@ -3,6 +3,7 @@ import path from "path";
 
 const dbPath = path.join(import.meta.dirname, "data.json");
 
+
 export function createDB() {
   return {
     async getById(resource, id) {
@@ -17,6 +18,14 @@ export function createDB() {
       return json[resource];
     },
 
+    async getOne(resource, query) {
+      const data = await fs.readFile(dbPath, { encoding: "utf-8" });
+      const json = JSON.parse(data);
+      return json[resource].find((x) => {
+        return Object.keys(query).every((key) => String(x[key]) === String(query[key]));
+      });
+    },
+
     async create(resource, obj) {
       const data = await fs.readFile(dbPath, { encoding: "utf-8" });
       const json = JSON.parse(data);
@@ -25,7 +34,10 @@ export function createDB() {
 
       const newResource = [...json[resource], newObj];
 
-      const newData = { ...json, [resource]: newResource };
+      const newData = {
+        ...json,
+        [resource]: newResource,
+      };
       await fs.writeFile(dbPath, JSON.stringify(newData));
 
       return newObj;
@@ -35,8 +47,9 @@ export function createDB() {
       const data = await fs.readFile(dbPath, { encoding: "utf-8" });
       const json = JSON.parse(data);
       const newResource = json[resource].map((x) => {
-        if (x.id != id) return x
-        else {
+        if (x.id != id) {
+          return x;
+        } else {
           return {
             ...x,
             ...updates,
@@ -44,9 +57,11 @@ export function createDB() {
           };
         }
       });
-      const newData = { ...json, [resource]: newResource };
 
-
+      const newData = {
+        ...json,
+        [resource]: newResource,
+      };
       await fs.writeFile(dbPath, JSON.stringify(newData));
     },
 
@@ -61,6 +76,11 @@ export function createDB() {
       };
 
       await fs.writeFile(dbPath, JSON.stringify(newData));
+    },
+
+    async raw() {
+      const data = await fs.readFile(dbPath, { encoding: "utf-8" });
+      return JSON.parse(data);
     },
   };
 }

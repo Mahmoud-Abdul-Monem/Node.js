@@ -61,7 +61,10 @@ cartRouter.post("/", checkAuth, checkRole("customer"), validateBody(cartSchema),
         message: "product added to cart",
         data: userCart
     });
-});
+})
+
+
+
 cartRouter.patch("/:productId", checkAuth, checkRole("customer"), validateBody(updateCartSchema), async (req, res) => {
     const { productId } = req.params;
     const { quantity } = req.body;
@@ -83,6 +86,8 @@ cartRouter.patch("/:productId", checkAuth, checkRole("customer"), validateBody(u
     const updatedCart = await db.getById("carts", userCart.id);
     res.status(200).json({ message: "cart updated", data: updatedCart });
 });
+
+
 
 cartRouter.delete("/:productId", checkAuth, checkRole("customer"), async (req, res) => {
     const { productId } = req.params;

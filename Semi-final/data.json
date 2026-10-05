@@ -1,1 +1,102 @@
-{"auth_users":[{"username":"ali","email":"linuxuser908@gmail.com","password":"$2b$10$YT3VjozksRFgWWU3G1WVv.xYPfGTKjobWTcHda6ERvlsPA.rqbZjy","role":"merchant","id":"7682158"},{"username":"ali","email":"linuxuser906@gmail.com","password":"$2b$10$dC2jvCJ4SiDGSDRfaH5ZwuVBhHfkjUjtG5Swc6aVGc8LNy1K94mWe","role":"customer","id":"1295750"}],"products":[{"name":"pc","description":"pc","price":400,"image":"https://t3.ftcdn.net/jpg/05/44/71/62/360_F_544716203_PkX2ZAij0YWqvgDpd8P8bF32zTSxzO1K.jpg","merchant_id":"7682158","id":"7714766"},{"name":"pc","description":"..","price":200,"image":"https://t3.ftcdn.net/jpg/05/44/71/62/360_F_544716203_PkX2ZAij0YWqvgDpd8P8bF32zTSxzO1K.jpg","merchant_id":"7682158","id":"1031432"}],"carts":[{"userId":"1295750","products":[],"id":"8540112"}],"orders":[{"userId":"1295750","products":[{"id":"1031432","name":"pc","description":"..","price":200,"image":"https://t3.ftcdn.net/jpg/05/44/71/62/360_F_544716203_PkX2ZAij0YWqvgDpd8P8bF32zTSxzO1K.jpg","quantity":3},{"id":"7714766","name":"pc","description":"pc","price":400,"image":"https://t3.ftcdn.net/jpg/05/44/71/62/360_F_544716203_PkX2ZAij0YWqvgDpd8P8bF32zTSxzO1K.jpg","quantity":2}],"total":1400,"status":"pending","createdAt":"2026-09-16T13:52:37.721Z","id":"8431564"}]}
+{
+    "auth_users": [
+        {
+            "username": "ali",
+            "email": "mahmoud.abdulmonem.elsayed@gmail.com",
+            "password": "$2b$10$4GmbkKaMxw06rGK.uQn45.rOzQ.r2Exoi2hofLBOwuuJdXVMiwPAe",
+            "role": "customer",
+            "id": "7424310"
+        },
+        {
+            "username": "mohamed",
+            "email": "linuxuser90@gmail.com",
+            "password": "$2b$10$FOMzGqyGIcWN9HELH0hmFuHfJ04MQHkoeREsX9lIRUzW4kALTmhf.",
+            "role": "merchant",
+            "id": "2519335"
+        }
+    ],
+    "products": [
+        {
+            "name": "Gaming pc",
+            "description": "High-performance gaming laptop with RGB keyboard and powerful graphics card",
+            "price": 900,
+            "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80",
+            "merchant_id": "7682158",
+            "id": "8821091"
+        },
+        {
+            "name": "Wireless Mechanical Keyboard",
+            "description": "Sleek mechanical keyboard with custom tactile switches and backlight",
+            "price": 150,
+            "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80",
+            "merchant_id": "7682158",
+            "id": "8821092"
+        },
+        {
+            "name": "4K Curved Monitor",
+            "description": "32-inch immersive curved display with 144Hz refresh rate",
+            "price": 450,
+            "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80",
+            "merchant_id": "7603587",
+            "id": "8821094"
+        },
+        {
+            "name": "Noise Canceling Headphones",
+            "description": "Premium over-ear wireless headphones with active noise cancellation",
+            "price": 250,
+            "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+            "merchant_id": "7682158",
+            "id": "8821095"
+        },
+        {
+            "name": "  Smart Watch Ultra",
+            "description": "Modern smartwatch with health tracking, GPS, and long battery life\n",
+            "price": 250,
+            "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+            "merchant_id": "2519335",
+            "id": "8878905"
+        }
+    ],
+    "carts": [
+        {
+            "userId": "7424310",
+            "products": [],
+            "id": "2136094"
+        }
+    ],
+    "orders": [
+        {
+            "userId": "7424310",
+            "products": [
+                {
+                    "id": "8821091",
+                    "name": "Gaming Laptop Pro",
+                    "description": "High-performance gaming laptop with RGB keyboard and powerful graphics card",
+                    "price": 1200,
+                    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80",
+                    "quantity": 2
+                },
+                {
+                    "id": "8821092",
+                    "name": "Wireless Mechanical Keyboard",
+                    "description": "Sleek mechanical keyboard with custom tactile switches and backlight",
+                    "price": 150,
+                    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80",
+                    "quantity": 6
+                },
+                {
+                    "id": "8821094",
+                    "name": "4K Curved Monitor",
+                    "description": "32-inch immersive curved display with 144Hz refresh rate",
+                    "price": 450,
+                    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80",
+                    "quantity": 1
+                }
+            ],
+            "total": 3750,
+            "status": "pending",
+            "createdAt": "2026-10-03T11:18:57.134Z",
+            "id": "2781567"
+        }
+    ]
+}
