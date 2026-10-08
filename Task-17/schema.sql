@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS todos (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    body TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    done BOOLEAN default false
+);
