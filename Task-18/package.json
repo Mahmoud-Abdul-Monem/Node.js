@@ -1,0 +1,22 @@
+{
+  "name": "01",
+  "version": "1.0.0",
+  "author": "eyad",
+  "main": "index.js",
+  "dependencies": {
+    "drizzle-orm": "^1.0.0-rc.4",
+    "express": "^5.2.1",
+    "pg": "^8.23.1",
+    "zod": "^4.6.5"
+  },
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "scripts": {
+    "dev": "node --watch index.js"
+  },
+  "type": "module",
+  "devDependencies": {
+    "drizzle-kit": "^1.0.0-rc.5-ab785fc"
+  }
+}
