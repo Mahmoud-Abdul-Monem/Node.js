@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "checkJs": false,
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@db/*": [
+        "./db/*"
+      ],
+      "@models/*": [
+        "./models/*"
+      ],
+      "@middleware/*": [
+        "./middleware/*"
+      ],
+      "@routes/*": [
+        "./routes/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "@validation/*": [
+        "./validation-schemas/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts"
+  ]
+}
