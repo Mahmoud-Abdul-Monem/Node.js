@@ -17,11 +17,11 @@ const storage = multer.diskStorage({
     }
 });
 
-const fileFilter = (req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+const fileFilter = (req, file, cb) => {
     if (file.mimetype.startsWith("image/")) {
         cb(null, true);
     } else {
-        cb(new Error("Not an image! Please upload an image."));
+        cb(new Error("Not an image! Please upload an image."), false);
     }
 };
 
@@ -32,7 +32,7 @@ const multerInstance = multer({
 });
 
 export const upload = {
-    single: (fieldName: string) => multerInstance.single(fieldName),
-    array: (fieldName: string, maxCount?: number) => multerInstance.array(fieldName, maxCount),
-    fields: (fieldsArray: multer.Field[]) => multerInstance.fields(fieldsArray)
+    single: (fieldName) => multerInstance.single(fieldName),
+    array: (fieldName, maxCount) => multerInstance.array(fieldName, maxCount),
+    fields: (fieldsArray) => multerInstance.fields(fieldsArray)
 };

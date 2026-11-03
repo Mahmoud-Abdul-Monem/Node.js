@@ -5,7 +5,7 @@ export const pagesRouter = express.Router();
 pagesRouter.get("/", (req, res) => {
     res.redirect("/home.html");
 });
-
+    
 pagesRouter.get("/home.html", (req, res) => {
     res.sendFile("pages/home.html", { root: import.meta.dirname + "/.." });
 });
